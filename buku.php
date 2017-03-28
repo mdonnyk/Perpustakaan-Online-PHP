@@ -13,9 +13,6 @@ include 'databaseConnection.php'; // Membuat koneksi ke database perpus_online l
         <title></title>
     </head>
     <body>
-        
-
-    
         Hasil cari buku:
         <table>
             <tr>
@@ -44,12 +41,19 @@ include 'databaseConnection.php'; // Membuat koneksi ke database perpus_online l
         
         
         <?php
-        $sql = "SELECT * FROM buku"; //query untuk mencari buku
         
-        $qcari=$_POST['qcari'];
-	               $query1="SELECT * FROM  data_buku 
-	               where judul like '%$qcari%'
-	               or pengarang like '%$qcari%'  ";
+        $qcari = $_GET['query'];
+        $sql = "SELECT * FROM BUKU WHERE "
+                . "(ISBN LIKE '%$qcari%' "
+                . "OR PENULIS LIKE '%$qcari%' "
+                . "OR PENULIS LIKE '%$qcari%');";
+
+//query untuk mencari buku
+        
+//        $qcari=$_POST['qcari'];
+//	               $query1="SELECT * FROM  data_buku 
+//	               where judul like '%$qcari%'
+//	               or pengarang like '%$qcari%'  ";
                        
         $result = $conn->query($sql);
 
@@ -60,7 +64,7 @@ include 'databaseConnection.php'; // Membuat koneksi ke database perpus_online l
             
             <tr>
                 <td>
-                    Kode Buku
+                    <?php echo $row["kode"]; ?>
                 </td>
                 <td>
                     <?php echo $row["isbn"]; ?>
@@ -72,13 +76,13 @@ include 'databaseConnection.php'; // Membuat koneksi ke database perpus_online l
                     <?php echo $row["penulis"]; ?>
                 </td>
                 <td>
-                    <?php echo $row["tahun_terbit"]; ?>
+                    <?php echo $row["tahun"]; ?>
                 </td>
                 <td>
                     <?php echo $row["penerbit"]; ?>
                 </td>
                 <td>
-                    Ketersediaan
+                    <?php echo $row["penerbit"]; ?>
                 </td>
             </tr>    
              
