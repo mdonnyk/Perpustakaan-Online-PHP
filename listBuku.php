@@ -17,9 +17,6 @@ include 'databaseConnection.php'; // Membuat koneksi ke database perpus_online l
         <table>
             <tr>
                 <td>
-                    Kode Buku
-                </td>
-                <td>
                     ISBN
                 </td>
                 <td>
@@ -34,9 +31,6 @@ include 'databaseConnection.php'; // Membuat koneksi ke database perpus_online l
                 <td>
                     Penerbit
                 </td>
-                <td>
-                    Ketersediaan
-                </td>
             </tr>
         
         
@@ -45,16 +39,10 @@ include 'databaseConnection.php'; // Membuat koneksi ke database perpus_online l
         $qcari = $_GET['query'];
         $sql = "SELECT * FROM BUKU WHERE "
                 . "(ISBN LIKE '%$qcari%' "
-                . "OR PENULIS LIKE '%$qcari%' "
+                . "OR JUDUL LIKE '%$qcari%' "
                 . "OR PENULIS LIKE '%$qcari%');";
 
-//query untuk mencari buku
-        
-//        $qcari=$_POST['qcari'];
-//	               $query1="SELECT * FROM  data_buku 
-//	               where judul like '%$qcari%'
-//	               or pengarang like '%$qcari%'  ";
-                       
+                
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -63,9 +51,6 @@ include 'databaseConnection.php'; // Membuat koneksi ke database perpus_online l
         ?>
             
             <tr>
-                <td>
-                    <?php echo $row["kode"]; ?>
-                </td>
                 <td>
                     <?php echo $row["isbn"]; ?>
                 </td>
@@ -77,9 +62,6 @@ include 'databaseConnection.php'; // Membuat koneksi ke database perpus_online l
                 </td>
                 <td>
                     <?php echo $row["tahun"]; ?>
-                </td>
-                <td>
-                    <?php echo $row["penerbit"]; ?>
                 </td>
                 <td>
                     <?php echo $row["penerbit"]; ?>

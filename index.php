@@ -10,7 +10,7 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <form action="buku.php">
+        <form action="listBuku.php">
             <input type="text" name="query" value="" /><br>
             <input type="submit" value="cari" />          
         </form>
