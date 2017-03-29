@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Halaman untuk menampilkan detail buku
+Tampilan buku + kode buku dan detail
 -->
-<?php
-include 'databaseConnection.php'; // Membuat koneksi ke database perpus_online localhost
-?>
+<?php include 'databaseConnection.php'; ?>
 <html>
     <head>
         <meta charset="UTF-8">
         <title></title>
     </head>
     <body>
+        
+        <!-- Bagian awal detail buku tabel awal -->
+        
         Detail Buku:
         <table>
             <tr>
@@ -35,21 +35,25 @@ include 'databaseConnection.php'; // Membuat koneksi ke database perpus_online l
                 <td>Penerbit</td>
                 <td><?php echo $_POST['penerbit']; ?></td>
             </tr>
+        </table>
         
+        <!-- Bagian awal detail buku tabel awal -->
+        
+        
+        <table>
         
         <?php
+        /*
+         * Sniplet php untuk mencari detail buku fisik
+         */
         
         $isbn = $_POST['isbn'];
         $sql = "SELECT kode, status FROM BUKU WHERE isbn=$isbn;";
-
-                
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-            // output data of each row
             while($row = $result->fetch_assoc()) { 
         ?>
-            
             <tr>
                 <td>
                     <?php echo $row["kode"]; ?>

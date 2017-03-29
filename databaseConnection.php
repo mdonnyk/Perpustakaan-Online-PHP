@@ -1,4 +1,8 @@
 <?php
+/*
+ * File php untuk menyambungkan ke database localhost
+ * 
+ */
     $servername = "localhost";
     $username = "root";
     $password = "";
